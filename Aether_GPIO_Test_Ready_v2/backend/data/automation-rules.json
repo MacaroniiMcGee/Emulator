@@ -1,0 +1,43 @@
+{
+  "version": "1.0",
+  "savedAt": "2025-10-14T00:00:00.000Z",
+  "rules": [
+    {
+      "id": "door1-unlock-sequence",
+      "name": "Door 1 Auto Unlock Sequence",
+      "description": "When Input 1 (REX button GPIO 17) is activated, unlock Door 1 for 5 seconds",
+      "enabled": true,
+      "priority": 100,
+      "conditions": { "all": [ { "event": "gpio_change", "pin": 17, "value": 1 } ] },
+      "actions": [
+        { "type": "log",  "params": { "level": "info", "message": "REX button pressed on GPIO 17, unlocking door" } },
+        { "type": "gpio", "params": { "pin": 14, "value": 1, "duration": 5000 } },
+        { "type": "log",  "params": { "level": "info", "message": "Door unlocked for 5 seconds" } }
+      ]
+    },
+    {
+      "id": "door2-unlock-sequence",
+      "name": "Door 2 Auto Unlock Sequence",
+      "description": "When Input 4 (REX button GPIO 22) is activated, unlock Door 2 for 5 seconds",
+      "enabled": true,
+      "priority": 100,
+      "conditions": { "all": [ { "event": "gpio_change", "pin": 22, "value": 1 } ] },
+      "actions": [
+        { "type": "log",  "params": { "level": "info", "message": "REX button pressed on GPIO 22, unlocking door 2" } },
+        { "type": "gpio", "params": { "pin": 27, "value": 1, "duration": 5000 } }
+      ]
+    },
+    {
+      "id": "safety-beam-alert",
+      "name": "Safety Beam Triggered Alert",
+      "description": "When safety beam (GPIO 24) is triggered, activate sounder",
+      "enabled": true,
+      "priority": 90,
+      "conditions": { "all": [ { "event": "gpio_change", "pin": 24, "value": 1 } ] },
+      "actions": [
+        { "type": "log",  "params": { "level": "warn", "message": "Safety beam triggered on GPIO 24" } },
+        { "type": "gpio", "params": { "pin": 23, "value": 1, "duration": 2000 } }
+      ]
+    }
+  ]
+}

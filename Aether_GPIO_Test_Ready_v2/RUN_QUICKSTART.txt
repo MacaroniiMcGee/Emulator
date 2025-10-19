@@ -1,0 +1,15 @@
+QUICK START
+-----------
+1) Extract this zip.
+2) Enter the OUTER folder, then the INNER folder that contains 'backend/'.
+   Example:
+     cd ~/Downloads/Aether_GPIO_Test_Ready_v2.2_WIEGAND_FINAL
+     INNER_DIR=$(find . -maxdepth 1 -type d ! -path . | head -n 1)
+     cd "$INNER_DIR"
+3) Run:
+     chmod +x run.sh
+     ./run.sh
+4) In another terminal, test:
+     curl -s http://localhost:3001/api/wiegand/config | jq
+     curl -sS -X POST http://localhost:3001/api/wiegand/preview -H 'Content-Type: application/json' -d '{"format":26,"facility":123,"card":12345,"parity":"std"}'
+     curl -sS -X POST http://localhost:3001/api/wiegand/send -H 'Content-Type: application/json' -d '{"door":1,"format":26,"facility":123,"card":12345}'
