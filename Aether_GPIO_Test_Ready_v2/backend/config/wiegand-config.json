@@ -1,0 +1,76 @@
+{
+  "version": "1.0",
+  "description": "Dedicated Wiegand GPIO pin configuration",
+  "chip": "gpiochip0",
+  "readers": [
+    {
+      "id": "door1-reader-in",
+      "name": "Door 1 Reader In",
+      "door": "Door 1",
+      "direction": "in",
+      "pins": {
+        "d0": 8,
+        "d1": 9
+      },
+      "timing": {
+        "pulseUs": 50,
+        "spaceUs": 1000
+      },
+      "enabled": true
+    },
+    {
+      "id": "door1-reader-out",
+      "name": "Door 1 Reader Out",
+      "door": "Door 1",
+      "direction": "out",
+      "pins": {
+        "d0": 10,
+        "d1": 11
+      },
+      "timing": {
+        "pulseUs": 50,
+        "spaceUs": 1000
+      },
+      "enabled": true
+    },
+    {
+      "id": "door2-reader-in",
+      "name": "Door 2 Reader In",
+      "door": "Door 2",
+      "direction": "in",
+      "pins": {
+        "d0": 23,
+        "d1": 24
+      },
+      "timing": {
+        "pulseUs": 50,
+        "spaceUs": 1000
+      },
+      "enabled": true
+    },
+    {
+      "id": "door2-reader-out",
+      "name": "Door 2 Reader Out",
+      "door": "Door 2",
+      "direction": "out",
+      "pins": {
+        "d0": 25,
+        "d1": 26
+      },
+      "timing": {
+        "pulseUs": 50,
+        "spaceUs": 1000
+      },
+      "enabled": true
+    }
+  ],
+  "defaultFormat": 26,
+  "supportedFormats": [26, 34, 35, 37, 48],
+  "reservedPins": [8, 9, 10, 11, 23, 24, 25, 26],
+  "notes": [
+    "These GPIO pins are RESERVED for Wiegand transmission only",
+    "Do not use these pins for general GPIO operations",
+    "D0 and D1 must be on the same GPIO chip",
+    "Timing values in microseconds"
+  ]
+}
